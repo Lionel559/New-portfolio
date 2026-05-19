@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{background:#ffffff}
 :root{
   --white:#ffffff;
   --offwhite:#f7f7f7;
@@ -19,7 +20,7 @@
   --mono:'DM Mono',monospace;
 }
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--black);font-family:var(--font);overflow-x:hidden}
+body{background:#ffffff;color:var(--black);font-family:var(--font);overflow-x:hidden}
 
 /* NAV */
 nav{
@@ -53,6 +54,7 @@ nav{
 
 /* HERO */
 .hero{
+  background:#ffffff;
   display:grid;grid-template-columns:1fr 420px;
   align-items:center;gap:3rem;
   padding:5rem 5rem 4rem;
@@ -348,22 +350,71 @@ footer{
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-@media(max-width:900px){
-  nav{padding:1.25rem 1.5rem}
+/* TABLET */
+@media(max-width:1024px){
+  nav{padding:1.25rem 2rem}
+  .hero{padding:4rem 2rem 3rem;gap:2rem}
+  .photo-bg{width:300px;height:300px}
+  main{padding:0 2rem}
+  footer{padding:1.5rem 2rem}
+  .contact-wrap{padding:4rem 2rem}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
   .nav-links{display:none}
-  .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;text-align:center;gap:2rem}
+  .nav-cta{padding:0.5rem 1rem;font-size:0.78rem}
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:2rem 1.25rem 3rem;
+    text-align:center;
+    gap:1.5rem;
+    min-height:auto;
+  }
   .hero-right{order:-1}
-  .photo-bg{width:220px;height:220px}
+  .photo-bg{width:200px;height:200px}
   .photo-badge,.photo-badge2{display:none}
-  .hero-desc{margin:0 auto 2rem}
-  .hero-actions{justify-content:center}
+  .hero-greeting{justify-content:center}
+  .hero-heading{font-size:clamp(2.5rem,10vw,3.5rem)}
+  .hero-desc{margin:0 auto 1.5rem;font-size:0.9rem}
+  .hero-actions{justify-content:center;flex-direction:row;flex-wrap:wrap;gap:0.6rem}
+  .btn-dark,.btn-ghost{width:auto;justify-content:center;padding:0.75rem 1.4rem;font-size:0.8rem}
   .hero-tags{justify-content:center}
+
   .stats-strip{grid-template-columns:repeat(2,1fr)}
   .stat-item:nth-child(2){border-right:none}
   .stat-item:nth-child(3){border-right:1px solid var(--light)}
-  main{padding:0 1.5rem}
-  .about-layout{grid-template-columns:1fr}
-  footer{padding:1.5rem;flex-direction:column;gap:0.5rem;text-align:center}
+  .stat-item{padding:1.25rem 1rem}
+  .stat-num{font-size:2rem}
+
+  main{padding:0 1.25rem}
+  section{padding:3rem 0}
+
+  .section-title{font-size:clamp(1.75rem,7vw,2.5rem)}
+  .filter-bar{gap:0.4rem}
+  .filter-btn{font-size:0.72rem;padding:0.4rem 0.9rem}
+
+  .projects-grid{grid-template-columns:1fr}
+
+  .about-layout{grid-template-columns:1fr;gap:2rem}
+  .about-card{padding:1.75rem}
+
+  .contact-wrap{padding:3rem 1.5rem;border-radius:20px}
+  .contact-title{font-size:clamp(2rem,8vw,3rem)}
+  .contact-actions{flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .btn-white,.btn-outline-white{width:auto;justify-content:center}
+
+  footer{padding:1.25rem;flex-direction:column;gap:0.4rem;text-align:center}
+}
+
+/* SMALL PHONES */
+@media(max-width:380px){
+  .hero-heading{font-size:2.2rem}
+  .photo-bg{width:160px;height:160px}
+  .stat-num{font-size:1.6rem}
+  .stat-label{font-size:0.65rem}
 }
 </style>
 </head>

@@ -1,9 +1,29 @@
 let allProjects = [];
+const CONTACT_EMAIL = "ayooladeji8@gmail.com";
+const LOCAL_HOSTS = ["localhost", "127.0.0.1", "[::1]"];
+let copyEmailTimer;
+const PORTFOLIO_STATS = [
+  ["stat-projects", "10+"],
+  ["stat-technologies", "12+"],
+  ["stat-live-apps", "7+"],
+  ["stat-packages", "1+"],
+];
 
 document.addEventListener("DOMContentLoaded", () => {
   bindFilterBar();
+  bindCopyEmail();
   loadGitHubProjects();
 });
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch((error) => {
+      if (LOCAL_HOSTS.includes(window.location.hostname)) {
+        console.warn("Service worker registration failed:", error);
+      }
+    });
+  });
+}
 
 async function loadGitHubProjects() {
   try {
@@ -23,7 +43,7 @@ async function loadGitHubProjects() {
       return (b.stargazers_count - a.stargazers_count) || new Date(b.updated_at) - new Date(a.updated_at);
     });
 
-    allProjects = [...PROJECTS, ...ownerRepos.map(projectFromRepo)];
+    allProjects = ownerRepos.map(projectFromRepo);
 
     updateStats(allProjects);
     updateAboutBio(user);
@@ -47,7 +67,7 @@ async function loadGitHubProjects() {
       escapeHtml(error.message) +
       "</div></div>";
 
-    ["stat-repos", "stat-stars", "stat-langs", "stat-forks"].forEach((id) => setText(id, "-"));
+    updateStats();
   }
 }
 
@@ -61,6 +81,63 @@ function bindFilterBar() {
 
     filterProjects(button.dataset.filter, button);
   });
+}
+
+function bindCopyEmail() {
+  const button = document.getElementById("copy-email");
+  const status = document.getElementById("copy-email-status");
+  if (!button || !status) return;
+
+  const email = button.dataset.email || CONTACT_EMAIL;
+
+  button.addEventListener("click", async () => {
+    const copied = await copyText(email);
+    showCopyStatus(status, copied ? "Email copied!" : "Could not copy email.", !copied);
+  });
+}
+
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (error) {
+      return fallbackCopyText(text);
+    }
+  }
+
+  return fallbackCopyText(text);
+}
+
+function fallbackCopyText(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.top = "-1000px";
+  textarea.style.left = "-1000px";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try {
+    return document.execCommand("copy");
+  } catch (error) {
+    return false;
+  } finally {
+    textarea.remove();
+  }
+}
+
+function showCopyStatus(status, message, isError) {
+  status.textContent = message;
+  status.classList.toggle("is-error", Boolean(isError));
+  status.hidden = false;
+
+  clearTimeout(copyEmailTimer);
+  copyEmailTimer = window.setTimeout(() => {
+    status.hidden = true;
+    status.classList.remove("is-error");
+  }, 3000);
 }
 
 function filterProjects(filter, button) {
@@ -89,8 +166,17 @@ function projectCardTemplate(project, index) {
   const tags = Array.isArray(project.tags) ? project.tags : [];
   const repoUrl = normalizeProjectUrl(project.repoUrl);
   const liveUrl = normalizeProjectUrl(project.liveUrl);
+  const title = project.title || project.name || "Untitled project";
+  const liveLabel = project.liveLabel || "Live demo";
   const liveButton = liveUrl
-    ? '<a class="project-action project-action-live" href="' + escapeAttr(liveUrl) + '" target="_blank" rel="noopener noreferrer">Live demo</a>'
+    ? '<a class="project-action project-action-live" href="' +
+      escapeAttr(liveUrl) +
+      '" target="_blank" rel="noopener noreferrer">' +
+      escapeHtml(liveLabel) +
+      "</a>"
+    : "";
+  const repoButton = repoUrl
+    ? '<a class="project-action" href="' + escapeAttr(repoUrl) + '" target="_blank" rel="noopener noreferrer">View repo</a>'
     : "";
 
   return (
@@ -113,7 +199,7 @@ function projectCardTemplate(project, index) {
     "</div>" +
     "</div>" +
     '<h3 class="project-name">' +
-    escapeHtml(project.title) +
+    escapeHtml(title) +
     "</h3>" +
     '<p class="project-desc">' +
     escapeHtml(project.description || "No description provided.") +
@@ -124,9 +210,7 @@ function projectCardTemplate(project, index) {
     (tags.length ? '<div class="project-topics">' + tags.map((tag) => '<span class="topic-tag">' + escapeHtml(tag) + "</span>").join("") + "</div>" : "") +
     "</div>" +
     '<div class="project-actions">' +
-    '<a class="project-action" href="' +
-    escapeAttr(repoUrl) +
-    '" target="_blank" rel="noopener noreferrer">View repo</a>' +
+    repoButton +
     liveButton +
     "</div>" +
     "</div>" +
@@ -146,15 +230,8 @@ function bindProjectCards(grid) {
   });
 }
 
-function updateStats(projects) {
-  const totalStars = projects.reduce((sum, project) => sum + (project.stars || 0), 0);
-  const totalForks = projects.reduce((sum, project) => sum + (project.forks || 0), 0);
-  const languages = getLanguages(projects);
-
-  setText("stat-repos", fmt(projects.length));
-  setText("stat-stars", fmt(totalStars));
-  setText("stat-langs", languages.length);
-  setText("stat-forks", fmt(totalForks));
+function updateStats() {
+  PORTFOLIO_STATS.forEach(([id, value]) => setText(id, value));
 }
 
 function updateAboutBio(user) {

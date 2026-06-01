@@ -4,7 +4,11 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="color-scheme" content="light dark"/>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0f1218" media="(prefers-color-scheme: dark)"/>
 <title>Lionel — Full-Stack Developer</title>
+<link rel="manifest" href="/manifest.json"/>
+<link rel="apple-touch-icon" href="/assets/icons/icon-192.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <script src="js/theme.js"></script>
 <link rel="stylesheet" href="css/style.css"/>
@@ -16,7 +20,7 @@
   <div class="nav-logo">Lionel<span>.</span></div>
   <ul class="nav-links">
     <li><a href="#" class="active">Home</a></li>
-    <li><a href="#projects">Projects</a></li>
+    <li><a href="#featured-projects">Projects</a></li>
     <li><a href="#about">About</a></li>
   </ul>
   <div class="nav-actions">
@@ -38,13 +42,19 @@
     <p class="hero-desc">I'm a full-stack developer based in Lagos, Nigeria. I build end-to-end digital systems — from robust APIs and databases to interfaces people love to use.</p>
     <div class="hero-actions">
       <a href="mailto:ayooladeji8@gmail.com" class="btn-dark">Get In Touch</a>
-      <a href="#projects" class="btn-ghost">Browse Projects</a>
+      <a href="#featured-projects" class="btn-ghost">Browse Projects</a>
+      <a href="https://drive.google.com/file/d/1uek7u83-ya41Xu2phGmPLYfjiicFIEzq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-ghost">&#x1F4C4; Resume</a>
     </div>
     <div class="hero-tags">
       <span class="hero-tag">React</span>
       <span class="hero-tag">Node.js</span>
       <span class="hero-tag">TypeScript</span>
       <span class="hero-tag">PostgreSQL</span>
+    </div>
+    <div class="pwa-badges" aria-label="Progressive web app features">
+      <span class="pwa-badge">&#9889; PWA Ready</span>
+      <span class="pwa-badge">&#x1F4F1; Installable</span>
+      <span class="pwa-badge">&#x1F310; Works Offline</span>
     </div>
   </div>
   <div class="hero-right">
@@ -62,28 +72,226 @@
 <!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="stat-item">
-    <span class="stat-num" id="stat-repos">—</span>
-    <span class="stat-label">Repositories</span>
+    <span class="stat-num" id="stat-projects">10+</span>
+    <span class="stat-label">Projects Built</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num" id="stat-stars">—</span>
-    <span class="stat-label">Total Stars</span>
+    <span class="stat-num" id="stat-technologies">12+</span>
+    <span class="stat-label">Technologies Used</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num" id="stat-langs">—</span>
-    <span class="stat-label">Languages</span>
+    <span class="stat-num" id="stat-live-apps">7+</span>
+    <span class="stat-label">Live Applications</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num" id="stat-forks">—</span>
-    <span class="stat-label">Total Forks</span>
+    <span class="stat-num" id="stat-packages">1+</span>
+    <span class="stat-label">Published Package</span>
   </div>
 </div>
 
-<!-- PROJECTS -->
+<!-- FEATURED PROJECTS -->
 <main>
+<section id="featured-projects" class="featured-projects">
+  <div class="section-eyebrow">Selected Work</div>
+  <h2 class="section-title">Featured Projects</h2>
+  <p class="section-sub">A curated look at the products, packages, and AI tools I would put in front of a hiring team first.</p>
+  <div class="featured-grid">
+    <article class="featured-card featured-memory">
+      <div class="featured-shot shot-memory" aria-hidden="true">
+        <div class="shot-window">
+          <div class="shot-topbar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="shot-content">
+            <div class="shot-search"></div>
+            <div class="shot-stack">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="shot-panel wide"></div>
+            <div class="shot-panel"></div>
+            <div class="shot-panel accent"></div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-kicker">AI browsing memory</div>
+        <h3 class="featured-title">Internet Memory</h3>
+        <p class="featured-desc">AI-powered browsing memory platform that helps users save, organize, search, and revisit important content from the web.</p>
+        <div class="featured-tech">
+          <span class="tech-badge">Next.js</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">Supabase</span>
+          <span class="tech-badge">TailwindCSS</span>
+        </div>
+        <div class="featured-actions">
+          <a href="https://internet-memory-phi.vercel.app" target="_blank" rel="noopener noreferrer" class="project-action project-action-live">Live Demo</a>
+          <a href="https://github.com/Lionel559/internet-memory" target="_blank" rel="noopener noreferrer" class="project-action">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="featured-card featured-package">
+      <div class="featured-shot shot-package" aria-hidden="true">
+        <div class="shot-window">
+          <div class="shot-topbar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="shot-terminal">
+            <div class="terminal-line short"></div>
+            <div class="terminal-line"></div>
+            <div class="terminal-line good"></div>
+            <div class="terminal-line warn"></div>
+            <div class="terminal-grid">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-kicker">Published npm package</div>
+        <h3 class="featured-title">npm-security-guardian</h3>
+        <p class="featured-desc">Published npm package that scans dependencies, detects security risks, and helps developers maintain safer Node.js projects.</p>
+        <div class="featured-tech">
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">Node.js</span>
+          <span class="tech-badge">npm</span>
+        </div>
+        <div class="featured-actions">
+          <a href="https://www.npmjs.com/package/npm-security-guardian" target="_blank" rel="noopener noreferrer" class="project-action project-action-live">npm Package</a>
+          <a href="https://github.com/Lionel559/npm-security-guardian" target="_blank" rel="noopener noreferrer" class="project-action">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="featured-card featured-flow">
+      <div class="featured-shot shot-flow" aria-hidden="true">
+        <div class="shot-window">
+          <div class="shot-topbar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="shot-dashboard">
+            <div class="shot-sidebar"></div>
+            <div class="shot-workspace">
+              <div class="shot-metric"></div>
+              <div class="shot-metric accent"></div>
+              <div class="shot-card-row"></div>
+              <div class="shot-card-row short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-kicker">Small business automation</div>
+        <h3 class="featured-title">AIFLOW</h3>
+        <p class="featured-desc">AI automation platform for small business owners with tools such as caption generation, customer reply assistance, invoice generation, and product description creation.</p>
+        <div class="featured-tech">
+          <span class="tech-badge">Next.js</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">AI APIs</span>
+        </div>
+        <div class="featured-actions">
+          <a href="https://ai-automation-khaki.vercel.app/dashboard" target="_blank" rel="noopener noreferrer" class="project-action project-action-live">Live Demo</a>
+          <a href="https://github.com/Lionel559/Ai-automation" target="_blank" rel="noopener noreferrer" class="project-action">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="featured-card featured-analyzer">
+      <div class="featured-shot shot-analyzer" aria-hidden="true">
+        <div class="shot-window">
+          <div class="shot-topbar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="shot-analysis">
+            <div class="shot-score">84</div>
+            <div class="shot-report">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-kicker">AI website analysis</div>
+        <h3 class="featured-title">Smart Landing Page AI Analyzer</h3>
+        <p class="featured-desc">Analyzes websites and landing pages using AI and provides actionable improvement suggestions.</p>
+        <div class="featured-tech">
+          <span class="tech-badge">Next.js</span>
+          <span class="tech-badge">Supabase</span>
+          <span class="tech-badge">AI APIs</span>
+        </div>
+        <div class="featured-actions">
+          <a href="https://smart-landingpage-ai-analyzer.vercel.app" target="_blank" rel="noopener noreferrer" class="project-action project-action-live">Live Demo</a>
+          <a href="https://github.com/Lionel559/Smart-landingpage-Ai-analyzer" target="_blank" rel="noopener noreferrer" class="project-action">GitHub</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CURRENTLY BUILDING -->
+<section id="currently-building" class="momentum-section">
+  <div class="section-eyebrow">In Progress</div>
+  <h2 class="section-title">Currently Building</h2>
+  <p class="section-sub">Focused work in progress across infrastructure, developer tooling, and offline-first portfolio systems.</p>
+  <div class="momentum-grid">
+    <article class="momentum-card">
+      <div class="momentum-icon" aria-hidden="true">&#x1F6A7;</div>
+      <div class="momentum-content">
+        <h3>Solana Infrastructure Bounty Project</h3>
+        <p>Building infrastructure tooling and learning-focused blockchain systems around the Solana ecosystem.</p>
+      </div>
+    </article>
+    <article class="momentum-card">
+      <div class="momentum-icon" aria-hidden="true">&#x1F6A7;</div>
+      <div class="momentum-content">
+        <h3>npm-security-guardian v2</h3>
+        <p>Improving dependency analysis, CLI output, security checks, and developer experience.</p>
+      </div>
+    </article>
+    <article class="momentum-card">
+      <div class="momentum-icon" aria-hidden="true">&#x1F6A7;</div>
+      <div class="momentum-content">
+        <h3>Offline Portfolio Experience</h3>
+        <p>Turning this portfolio into an installable PWA that works offline after the first visit.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- RECENT WINS -->
+<section id="recent-wins" class="momentum-section">
+  <div class="section-eyebrow">Milestones</div>
+  <h2 class="section-title">Recent Wins</h2>
+  <p class="section-sub">Recent launches and upgrades that show shipped work, polish, and momentum.</p>
+  <div class="momentum-grid">
+    <article class="momentum-card momentum-win">
+      <div class="momentum-icon" aria-hidden="true">&#x1F3C6;</div>
+      <div class="momentum-content">
+        <h3>Published npm-security-guardian on npm</h3>
+        <p>Released a TypeScript-based developer security tool as a public npm package.</p>
+      </div>
+    </article>
+    <article class="momentum-card momentum-win">
+      <div class="momentum-icon" aria-hidden="true">&#x1F680;</div>
+      <div class="momentum-content">
+        <h3>Launched Internet Memory</h3>
+        <p>Built an AI-powered browsing memory platform with extension support and realtime sync.</p>
+      </div>
+    </article>
+    <article class="momentum-card momentum-win">
+      <div class="momentum-icon" aria-hidden="true">&#9889;</div>
+      <div class="momentum-content">
+        <h3>Upgraded Portfolio to PWA</h3>
+        <p>Added offline support, installability, and improved performance.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects">
-  <div class="section-eyebrow">Work</div>
-  <h2 class="section-title">Projects</h2>
+  <div class="section-eyebrow">GitHub</div>
+  <h2 class="section-title">Repositories</h2>
   <p class="section-sub">Auto-synced from GitHub on every page load. Push a new repo and it appears here instantly.</p>
   <div class="filter-bar" id="filter-bar">
     <button class="filter-btn active" type="button" data-filter="all">All</button>
@@ -111,7 +319,7 @@
         I'm a full-stack developer who turns ideas into polished, production-ready products. From architecting APIs and wiring up databases to crafting responsive, pixel-perfect interfaces — I own the entire stack. I write clean, scalable code and obsess over the details that make the difference between software that works and software people love to use.
       </p>
       <div class="about-links">
-        <a href="https://github.com/Lionel559" target="_blank" class="about-link"><span>//</span> github.com/Lionel559</a>
+        <a href="https://github.com/Lionel559" target="_blank" rel="noopener noreferrer" class="about-link"><span>//</span> github.com/Lionel559</a>
         <a href="mailto:ayooladeji8@gmail.com" class="about-link"><span>//</span> ayooladeji8@gmail.com</a>
       </div>
     </div>
@@ -162,8 +370,11 @@
     <p class="contact-sub">Open to freelance, collaborations, and full-time roles.<br>I respond fast.</p>
     <div class="contact-actions">
       <a href="mailto:ayooladeji8@gmail.com" class="btn-white">Send a Message</a>
-      <a href="https://github.com/Lionel559" target="_blank" class="btn-outline-white">GitHub Profile ↗</a>
+      <button class="btn-outline-white copy-email-btn" type="button" id="copy-email" data-email="ayooladeji8@gmail.com">Copy Email</button>
+      <a href="https://drive.google.com/file/d/1uek7u83-ya41Xu2phGmPLYfjiicFIEzq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline-white">&#x1F4C4; Resume</a>
+      <a href="https://github.com/Lionel559" target="_blank" rel="noopener noreferrer" class="btn-outline-white">GitHub Profile ↗</a>
     </div>
+    <div class="copy-email-status" id="copy-email-status" role="status" aria-live="polite" hidden>Email copied!</div>
   </div>
 </section>
 </main>
